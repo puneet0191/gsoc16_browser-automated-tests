@@ -1,18 +1,15 @@
-Feature: content
-  In order to manage content article in the web
-  As an owner
-  I need to create content article
+Feature: manage web content
+  In order to create content articles for my website
+  As an administrator
+  I need be able to create and manage content articles
 
   Background:
-    Given Joomla CMS is installed
-    When Login into Joomla administrator with username "puneet" and password "1234"
-    Then I see administrator dashboard
+    Given I am Logged in into Joomla administrator
+    And I am at administrator Control Panel
 
   Scenario: Create an Article
-    Given There is a Add Content link
-    When I fill mandatory fields for creating article
-      | field   | value                    |
-      | title   | My_Article               |
-      | content | This is my First Article |
-    And I save an article
-    Then I should see the "Article successfully saved." message
+    When I visit articles page
+    And I create a new article
+    And I fill mandatory fields for creating an article
+    And I save the new article
+    Then the article should be created
